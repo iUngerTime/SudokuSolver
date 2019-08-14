@@ -156,7 +156,7 @@
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<ToggleButton Style="{DynamicResource NotSelected}" Margin="3" Content="{Binding Content}" Click="ToggleButton_Click"/>
+						<ToggleButton Style="{DynamicResource AllToggleButtons}" Margin="3" Content="{Binding Content}" Click="ToggleButton_Click"/>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
@@ -169,7 +169,7 @@
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<ToggleButton Style="{DynamicResource NotSelected}" Margin="3" Click="ToggleButton_Click"/>
+						<ToggleButton Style="{DynamicResource AllToggleButtons}" Margin="3" Click="ToggleButton_Click"/>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
@@ -182,7 +182,7 @@
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<ToggleButton Style="{DynamicResource NotSelected}" Margin="3" Click="ToggleButton_Click"/>
+						<ToggleButton Style="{DynamicResource AllToggleButtons}" Margin="3" Click="ToggleButton_Click"/>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
@@ -195,7 +195,7 @@
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<ToggleButton Style="{DynamicResource NotSelected}" Margin="3" Click="ToggleButton_Click"/>
+						<ToggleButton Style="{DynamicResource AllToggleButtons}" Margin="3" Click="ToggleButton_Click"/>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
@@ -208,7 +208,7 @@
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<ToggleButton Style="{DynamicResource NotSelected}" Margin="3" Click="ToggleButton_Click"/>
+						<ToggleButton Style="{DynamicResource AllToggleButtons}" Margin="3" Click="ToggleButton_Click"/>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
@@ -221,7 +221,7 @@
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<ToggleButton Style="{DynamicResource NotSelected}" Margin="3" Click="ToggleButton_Click"/>
+						<ToggleButton Style="{DynamicResource AllToggleButtons}" Margin="3" Click="ToggleButton_Click"/>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
@@ -234,7 +234,7 @@
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<ToggleButton Style="{DynamicResource NotSelected}" Margin="3" Click="ToggleButton_Click"/>
+						<ToggleButton Style="{DynamicResource AllToggleButtons}" Margin="3" Click="ToggleButton_Click"/>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
@@ -247,7 +247,7 @@
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<ToggleButton Style="{DynamicResource NotSelected}" Margin="3" Click="ToggleButton_Click"/>
+						<ToggleButton Style="{DynamicResource AllToggleButtons}" Margin="3" Click="ToggleButton_Click"/>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
@@ -260,7 +260,7 @@
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<ToggleButton Style="{DynamicResource NotSelected}" Margin="3" Click="ToggleButton_Click"/>
+						<ToggleButton Style="{DynamicResource AllToggleButtons}" Margin="3" Click="ToggleButton_Click"/>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>

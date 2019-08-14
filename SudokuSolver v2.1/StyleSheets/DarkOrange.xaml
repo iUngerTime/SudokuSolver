@@ -3,7 +3,7 @@
 	<Style x:Key="MainWindowStyle" TargetType="Window">
 		<Setter Property="Background" Value="#545454"/>
 	</Style>
-	<Style x:Key="SelectedToggleButton" TargetType="{x:Type ToggleButton}">
+	<Style x:Key="AllToggleButtons" TargetType="{x:Type ToggleButton}">
 		<Setter Property="Height" Value="35"/>
 		<Setter Property="Width" Value="35"/>
 		<Setter Property="Template">
@@ -19,50 +19,50 @@
 						<Trigger Property="IsChecked" Value="True">
 							<Setter Property="Fill" TargetName="button" Value="#f5b869"/>
 						</Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="LightSlateGray"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
+						<Trigger Property="IsPressed" Value="True">
+							<Setter Property="Background" TargetName="border" Value="LightSlateGray"/>
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
 							<Setter Property="BorderBrush" TargetName="border" Value="#ff8800"/>
 						</Trigger>
-                        <!--<Trigger Property="Content" Value="0">
-                            <Setter Property="Style" Value="{DynamicResource NotSelected}"/>
-                        </Trigger>-->
-                    </ControlTemplate.Triggers>
+						<Trigger Property="Content" Value="0">
+							<Setter Property="Fill" TargetName="button" Value="Transparent"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
 	</Style>
-    <Style x:Key="ToolBarButton" TargetType="{x:Type ToggleButton}">
-        <Setter Property="Height" Value="35"/>
-        <Setter Property="Width" Value="35"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border x:Name="border" BorderThickness="2">
-                        <Grid x:Name="grid">
-                            <Ellipse x:Name="button" Fill="#545454" Stroke="White" StrokeThickness=".5"/>
-                            <ContentPresenter x:Name="presenter" HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontSize="20" TextElement.FontWeight="DemiBold" TextElement.Foreground="White"/>
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Fill" TargetName="button" Value="#ff8800"/>
-                            <Setter Property="TextElement.Foreground" TargetName="presenter" Value="#545454"/>
-                            <Setter Property="Stroke" TargetName="button" Value="#ff8800"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="LightSlateGray"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" TargetName="border" Value="#ff8800"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style x:Key="InnerVerticalGridBorders" TargetType="Border">
+	<Style x:Key="ToolBarButton" TargetType="{x:Type ToggleButton}">
+		<Setter Property="Height" Value="35"/>
+		<Setter Property="Width" Value="35"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ToggleButton}">
+					<Border x:Name="border" BorderThickness="2">
+						<Grid x:Name="grid">
+							<Ellipse x:Name="button" Fill="#545454" Stroke="White" StrokeThickness=".5"/>
+							<ContentPresenter x:Name="presenter" HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontSize="20" TextElement.FontWeight="DemiBold" TextElement.Foreground="White"/>
+						</Grid>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsChecked" Value="True">
+							<Setter Property="Fill" TargetName="button" Value="#ff8800"/>
+							<Setter Property="TextElement.Foreground" TargetName="presenter" Value="#545454"/>
+							<Setter Property="Stroke" TargetName="button" Value="#ff8800"/>
+						</Trigger>
+						<Trigger Property="IsPressed" Value="True">
+							<Setter Property="Background" TargetName="border" Value="LightSlateGray"/>
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="BorderBrush" TargetName="border" Value="#ff8800"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="InnerVerticalGridBorders" TargetType="Border">
 		<Setter Property="Height" Value="25"/>
 		<Setter Property="Width" Value="1"/>
 		<Setter Property="Background" Value="DarkGray"/>
@@ -97,7 +97,7 @@
 				<ControlTemplate TargetType="{x:Type Button}">
 					<Grid x:Name="grid">
 						<Border x:Name="border" CornerRadius="8" Background="#919191" BorderThickness="2" Height="60" Width="140">
-                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+							<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
 						</Border>
 					</Grid>
 					<ControlTemplate.Triggers>

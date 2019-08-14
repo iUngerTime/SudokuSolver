@@ -7,49 +7,61 @@ using System.Threading.Tasks;
 
 namespace SudokuSolver_v2._1.GridObjects
 {
-    public class GridSquare : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
+   public class GridSquare : INotifyPropertyChanged
+   {
+      public event PropertyChangedEventHandler PropertyChanged;
 
-        //Notify Function
-        void Notify(string propName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        }
+      //Notify Function
+      void Notify(string propName)
+      {
+         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+      }
 
-        //Variables
-        int row;
-        int col;
+      //Variables
+      int row;
+      int col;
+      int content;
 
-        //Row Property
-        public int Row
-        {
-            get { return row; }
-            set
-            {
-                row = value;
-                Notify("Row");
-            }
-        }
+      //Row Property
+      public int Row
+      {
+         get { return row; }
+         set
+         {
+            row = value;
+            Notify("Row");
+         }
+      }
 
-        //Column Property
-        public int Column
-        {
-            get { return col; }
-            set
-            {
-                col = value;
-                Notify("Column");
-            }
-        }
+      //Column Property
+      public int Column
+      {
+         get { return col; }
+         set
+         {
+            col = value;
+            Notify("Column");
+         }
+      }
 
-        //Constructors
-        public GridSquare() : this(0, 0, 0) { }
-        public GridSquare(int row, int col, int content)
-        {
-            this.row = row;
-            this.col = col;
-            this.content = content;
-        }
-    }
+      //Column Property
+      public int Content
+      {
+         get { return content; }
+         set
+         {
+            content = value;
+            Notify("Content");
+         }
+      }
+
+      //Constructors
+      public GridSquare() : this(0, 0, 0) { }
+      public GridSquare(int row, int col, int content)
+      {
+         this.row = row;
+         this.col = col;
+         this.content = content;
+      }
+   }
 }
