@@ -20,7 +20,6 @@ namespace SudokuSolver_v2._1.GridObjects
       //Variables
       int row;
       int col;
-      int content;
 
       //Row Property
       public int Row
@@ -44,24 +43,12 @@ namespace SudokuSolver_v2._1.GridObjects
          }
       }
 
-      //Column Property
-      public int Content
-      {
-         get { return content; }
-         set
-         {
-            content = value;
-            Notify("Content");
-         }
-      }
-
       //Constructors
-      public GridSquare() : this(0, 0, 0) { }
-      public GridSquare(int row, int col, int content)
+      public GridSquare() : this(0, 0) { }
+      public GridSquare(int row, int col)
       {
          this.row = row;
          this.col = col;
-         this.content = content;
       }
    }
 }
