@@ -1,0 +1,1046 @@
+﻿<Window x:Name="mainWindow" x:Class="SolverLogic.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SolverLogic"
+        mc:Ignorable="d"
+        Title="Sudoku Solver" Height="559.047" Width="723.943"
+        ResizeMode="CanMinimize">
+    <StackPanel Orientation="Horizontal" Margin="25,25,25,25">
+        <Border BorderBrush="Black" BorderThickness="5" VerticalAlignment="Top">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <!--Box One-->
+                <Grid Grid.Column="0" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="Box00" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box10" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box20" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box01" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box11" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box21" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box02" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box12" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box22" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Rectangle Grid.Column="1" Grid.RowSpan="5" Fill="Black"/>
+                <!--Box Two-->
+                <Grid Grid.Column="2" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="Box30" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box40" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box50" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box31" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box41" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box51" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box32" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box42" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box52" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Rectangle Grid.Column="3" Grid.RowSpan="5" Fill="Black"/>
+                <!--box three-->
+                <Grid Grid.Column="4" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="Box60" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box70" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box80" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box61" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box71" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box81" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box62" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box72" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box82" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Rectangle Grid.Row="1" Grid.ColumnSpan="5" Fill="Black"/>
+                <!--Box 4-->
+                <Grid Grid.Column="0" Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="Box03" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box13" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box23" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box04" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box14" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box24" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box05" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box15" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box25" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Rectangle Grid.Row="3" Grid.ColumnSpan="5" Fill="Black"/>
+                <!--box 5-->
+                <Grid Grid.Column="2" Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="Box33" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box43" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box53" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box34" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box44" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box54" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box35" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box45" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box55" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <!--box 6-->
+                <Grid Grid.Column="4" Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="Box63" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box73" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box83" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box64" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box74" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box84" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box65" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box75" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box85" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <!--Box 7-->
+                <Grid Grid.Column="0" Grid.Row="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="Box06" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box16" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box26" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box07" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box17" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box27" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box08" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box18" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box28" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Rectangle Grid.Row="3" Grid.ColumnSpan="5" Fill="Black"/>
+                <!--box 8-->
+                <Grid Grid.Column="2" Grid.Row="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="Box36" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box46" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box56" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box37" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box47" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box57" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box38" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box48" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box58" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <!--box 9-->
+                <Grid Grid.Column="4" Grid.Row="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="Box66" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box76" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box86" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="0">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box67" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box77" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box87" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="1">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box68" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box78" FontSize="25" FontWeight="Bold" Grid.Column="1" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="Box88" FontSize="25" FontWeight="Bold" Grid.Column="2" Grid.Row="2">
+                        <ComboBoxItem FontSize="10">1</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">2</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">3</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">4</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">5</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">6</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">7</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">8</ComboBoxItem>
+                        <ComboBoxItem FontSize="10">9</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+            </Grid>
+        </Border>
+        <StackPanel>
+            <Button Content="Solve" Width="100" Height="75" Margin="60,200,0,0" Click="Solve_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
