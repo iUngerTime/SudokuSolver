@@ -29,7 +29,7 @@ namespace SudokuSolver_v3
          InitializeComponent();
       }
 
-      private void RadioButton_Click(object sender, RoutedEventArgs e)
+      private void ToolBarSelectionButtons(object sender, RoutedEventArgs e)
       {
          if (Convert.ToString((sender as ToggleButton).Content) == "X")
             m_selectedValue = 0;

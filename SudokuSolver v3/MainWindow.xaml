@@ -49,16 +49,16 @@
 		<StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="25">
 			<Border Style="{DynamicResource ToolBar}">
 				<WrapPanel Width="82">
-					<RadioButton Style="{DynamicResource ToolBarButton}" Content="1" Margin="3" Click="RadioButton_Click"/>
-					<RadioButton Style="{DynamicResource ToolBarButton}" Content="2" Margin="3" Click="RadioButton_Click"/>
-					<RadioButton Style="{DynamicResource ToolBarButton}" Content="3" Margin="3" Click="RadioButton_Click"/>
-					<RadioButton Style="{DynamicResource ToolBarButton}" Content="4" Margin="3" Click="RadioButton_Click"/>
-					<RadioButton Style="{DynamicResource ToolBarButton}" Content="5" Margin="3" Click="RadioButton_Click"/>
-					<RadioButton Style="{DynamicResource ToolBarButton}" Content="6" Margin="3" Click="RadioButton_Click"/>
-					<RadioButton Style="{DynamicResource ToolBarButton}" Content="7" Margin="3" Click="RadioButton_Click"/>
-					<RadioButton Style="{DynamicResource ToolBarButton}" Content="8" Margin="3" Click="RadioButton_Click"/>
-					<RadioButton Style="{DynamicResource ToolBarButton}" Content="9" Margin="3" Click="RadioButton_Click"/>
-					<RadioButton Style="{DynamicResource ToolBarButton}" Content="X" Margin="3" Click="RadioButton_Click"/>
+					<RadioButton Style="{DynamicResource ToolBarButton}" Content="1" Margin="3" Click="ToolBarSelectionButtons"/>
+					<RadioButton Style="{DynamicResource ToolBarButton}" Content="2" Margin="3" Click="ToolBarSelectionButtons"/>
+					<RadioButton Style="{DynamicResource ToolBarButton}" Content="3" Margin="3" Click="ToolBarSelectionButtons"/>
+					<RadioButton Style="{DynamicResource ToolBarButton}" Content="4" Margin="3" Click="ToolBarSelectionButtons"/>
+					<RadioButton Style="{DynamicResource ToolBarButton}" Content="5" Margin="3" Click="ToolBarSelectionButtons"/>
+					<RadioButton Style="{DynamicResource ToolBarButton}" Content="6" Margin="3" Click="ToolBarSelectionButtons"/>
+					<RadioButton Style="{DynamicResource ToolBarButton}" Content="7" Margin="3" Click="ToolBarSelectionButtons"/>
+					<RadioButton Style="{DynamicResource ToolBarButton}" Content="8" Margin="3" Click="ToolBarSelectionButtons"/>
+					<RadioButton Style="{DynamicResource ToolBarButton}" Content="9" Margin="3" Click="ToolBarSelectionButtons"/>
+					<RadioButton Style="{DynamicResource ToolBarButton}" Content="X" Margin="3" Click="ToolBarSelectionButtons"/>
 				</WrapPanel>
 			</Border>
 			<Button Style="{DynamicResource SolveButton}" Margin="10" Content="Solve Puzzle"/>
