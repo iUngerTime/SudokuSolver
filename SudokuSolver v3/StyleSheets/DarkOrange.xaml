@@ -27,6 +27,7 @@
 						</Trigger>
 						<Trigger Property="Content" Value="0">
 							<Setter Property="Fill" TargetName="button" Value="Transparent"/>
+							<Setter Property="Foreground" Value="Transparent"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>

@@ -36,5 +36,10 @@ namespace SudokuSolver_v3
          else
             m_selectedValue = Convert.ToInt32((sender as ToggleButton).Content);
       }
+
+      private void GridButtonClick(object sender, RoutedEventArgs e)
+      {
+         (sender as ToggleButton).Content = m_selectedValue.ToString();
+      }
    }
 }
