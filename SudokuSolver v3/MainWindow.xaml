@@ -260,7 +260,7 @@
 					<RadioButton Style="{DynamicResource ToolBarButton}" Content="X" Margin="3" Click="ToolBarSelectionButtons"/>
 				</WrapPanel>
 			</Border>
-			<Button Style="{DynamicResource SolveButton}" Margin="10" Content="Solve Puzzle"/>
+			<Button Style="{DynamicResource SolveButton}" Margin="10" Content="Solve Puzzle" Click="SolvePuzzleClick"/>
 		</StackPanel>
 	</DockPanel>
 </Window>
