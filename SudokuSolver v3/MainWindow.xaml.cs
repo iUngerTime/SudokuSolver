@@ -31,10 +31,27 @@ namespace SudokuSolver_v3
 
       private void ToolBarSelectionButtons(object sender, RoutedEventArgs e)
       {
+         //Set the value of class selected value
          if (Convert.ToString((sender as ToggleButton).Content) == "X")
             m_selectedValue = 0;
          else
             m_selectedValue = Convert.ToInt32((sender as ToggleButton).Content);
+
+         //Iterate through all puzzle btns
+         foreach (Grid Square in PuzzleSquares.Children.OfType<Grid>())
+         {
+            foreach (ToggleButton btn in Square.Children.OfType<ToggleButton>())
+            {
+               if(btn.Content.ToString() == m_selectedValue.ToString())
+               {
+                  btn.IsChecked = true;
+               }
+               else
+               {
+                  btn.IsChecked = false;
+               }
+            }
+         }
       }
 
       private void GridButtonClick(object sender, RoutedEventArgs e)
@@ -44,6 +61,7 @@ namespace SudokuSolver_v3
 
       private void ClearAllSquaresClick(object sender, RoutedEventArgs e)
       {
+         //Iterate through all puzzle btns
          foreach (Grid Square in PuzzleSquares.Children.OfType<Grid>())
          {
             foreach (ToggleButton btn in Square.Children.OfType<ToggleButton>())
