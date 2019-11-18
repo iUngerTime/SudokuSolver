@@ -41,5 +41,16 @@ namespace SudokuSolver_v3
       {
          (sender as ToggleButton).Content = m_selectedValue.ToString();
       }
+
+      private void ClearAllSquaresClick(object sender, RoutedEventArgs e)
+      {
+         foreach (Grid Square in PuzzleSquares.Children.OfType<Grid>())
+         {
+            foreach (ToggleButton btn in Square.Children.OfType<ToggleButton>())
+            {
+               btn.Content = "0";
+            }
+         }
+      }
    }
 }
