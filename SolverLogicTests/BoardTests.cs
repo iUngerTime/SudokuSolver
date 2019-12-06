@@ -12,23 +12,53 @@ namespace SudokuSolverLogic.Tests
     public class BoardTests
     {
         [TestMethod()]
-        public void FindSquareWithLowestValueAllSquares()
+        public void FindSquareWithLowestValue_AllSquaresAtTwoValues()
         {
-            //ONLY DOES ONE ROW RIGHT NOW
-
-
-            Board testBoard = new Board();
-
-            //Set 8 values in row 1
-            for (int col = 1; col < 8; col++)
+            for (int row = 1; row < 10; row++)
             {
-                testBoard.SetSquareValue(1, col, col);
+                for (int col = 1; col < 10; col++)
+                {
+                    Board testBoard = new Board();
+
+                    //At left edge (set all but that col and (row +/- 1)(col)
+                    if (col == 9)
+                    {
+                        //check if row would go out of boundary
+                        int currRow;
+
+                        if (row > 6)
+                            currRow = row - 3;
+                        else
+                            currRow = row + 3;
+
+                        //Set all but last 3 in row
+                        for (int i = 1; i < 7; i++)
+                        {
+                            testBoard.SetSquareValue(row, i, i);
+                        }
+
+                        //Set one above or below col 9
+                        testBoard.SetSquareValue(currRow, 9, 8);
+                    }
+                    //Not in a boundary (set all but that col and col + 1)
+                    else
+                    {
+                        //Set all but that col and col + 1
+                        for (int i = 1; i < 10; i++)
+                        {
+                            if(i != col && i != (col + 1))
+                            {
+                                testBoard.SetSquareValue(row, i, i);
+                            }
+                        }
+                    }
+
+                    Square testSquare = testBoard.SquareWithLeastAmountOfPotentialValues();
+
+                    Assert.IsTrue(testSquare.Row == row);
+                    Assert.IsTrue(testSquare.Column == col);
+                }
             }
-
-            Square testSquare = testBoard.SquareWithLeastAmountOfPotentialValues();
-
-            Assert.IsTrue(testSquare.Row == 1);
-            Assert.IsTrue(testSquare.Column == 8);
         }
 
         [TestMethod()]
