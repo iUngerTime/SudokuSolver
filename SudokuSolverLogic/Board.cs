@@ -21,6 +21,29 @@ namespace SudokuSolverLogic
         }
 
         /// <summary>
+        /// This will brute force solve the board using the information it already knows
+        /// </summary>
+        public void ForceSudokuSolve()
+        {
+            ////////////////////////
+            //tentative algorithim//
+            ////////////////////////
+            
+            //While(not finished)
+            //{
+            //  Duplicate board
+            //  Get square with smallest amount of potential values
+            //  Try to solve with that potential value
+            //  if resulting board is INVALID then remove that potential value from that square
+            //}
+
+            /*NOTES
+             * This needs a good function to determine if board becomes invalid!
+             * How will this be done?
+             */
+        }
+
+        /// <summary>
         /// Sudoku Requires at least 17 minimum squares to be solvable. This determines if the board has enough squares solved
         /// </summary>
         /// <returns>True if has 17 or more, false if not.</returns>
