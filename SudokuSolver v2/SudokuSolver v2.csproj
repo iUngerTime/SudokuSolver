@@ -76,8 +76,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Grid Objects\GridSquare.cs" />
-    <Compile Include="Solver Logic\Board.cs" />
-    <Compile Include="Solver Logic\Square.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

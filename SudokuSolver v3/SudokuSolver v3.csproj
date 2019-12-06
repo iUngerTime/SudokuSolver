@@ -58,8 +58,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SolverLogic\Board.cs" />
-    <Compile Include="SolverLogic\Square.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,6 +103,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="SudokuIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SudokuSolverLogic\SudokuSolverLogic.csproj">
+      <Project>{8a358735-168e-4173-8fb0-ee37c62eef5c}</Project>
+      <Name>SudokuSolverLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

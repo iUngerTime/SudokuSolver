@@ -1,4 +1,4 @@
-﻿using SudokuSolver_v3.SolverLogic;
+﻿using SudokuSolverLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
