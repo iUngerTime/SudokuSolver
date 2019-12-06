@@ -96,9 +96,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SudokuSolverLogic\SudokuSolverLogic.csproj">
+    <ProjectReference Include="..\SudokuSolverLogic\SolverLogic.csproj">
       <Project>{8a358735-168e-4173-8fb0-ee37c62eef5c}</Project>
-      <Name>SudokuSolverLogic</Name>
+      <Name>SolverLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

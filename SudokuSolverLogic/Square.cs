@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SudokuSolverLogic
 {
@@ -62,6 +58,7 @@ namespace SudokuSolverLogic
         public bool IsSolved { get { return Value != null; } }
 
         public int? Value { get; set; }
+
         internal List<int> PotentialValues { get; private set; }
 
         internal Square(int row, int column)
