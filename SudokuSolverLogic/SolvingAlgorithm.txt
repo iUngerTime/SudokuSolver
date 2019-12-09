@@ -36,6 +36,9 @@ SolveEntireBoard()
         FindSingleNumbersInQuadrents()
         FindRowAndColumnSequencingInQuadrents()
 
+        foreach(square in grid)
+            
+
 FindSingleNumbersInQuadrents()
     foreach(quadrent in grid)
         for(1-9)

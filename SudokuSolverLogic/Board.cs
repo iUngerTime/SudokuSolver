@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SudokuSolverLogic
@@ -141,6 +142,37 @@ namespace SudokuSolverLogic
             {
                 square.PotentialValues.Remove(value);
             }
+        }
+
+        public void SolveEntireBoard()
+        {
+            bool notSolved = true;
+
+            while (notSolved)
+            {
+                FindSingleNumbersInQuadrents();
+                FindRowAndColumnSequencingInQuadrents();
+
+                //Check solved or not
+                if (Squares.TrueForAll(squareSolved))
+                    notSolved = true;
+            }
+        }
+
+        // Search predicate returns true if square is solved
+        private static bool squareSolved(Square s)
+        {
+            return s.IsSolved;
+        }
+
+        private void FindRowAndColumnSequencingInQuadrents()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void FindSingleNumbersInQuadrents()
+        {
+            throw new NotImplementedException();
         }
     }
 }
