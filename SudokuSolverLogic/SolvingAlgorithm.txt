@@ -33,4 +33,49 @@ RemoveAllPotentialValuesFromSquare(row, column)
 
 SolveEntireBoard()
     while(notSolved)
-        FindNumberInGridWithOne
+        FindSingleNumbersInQuadrents()
+        FindRowAndColumnSequencingInQuadrents()
+
+FindSingleNumbersInQuadrents()
+    foreach(quadrent in grid)
+        for(1-9)
+            numValues = 0
+            foreach(square in currentQuadrent where potentialValues.contains(i) and !isSovled())
+                numValues++
+            if(numValues = 1)
+                newSolvedSquare = Squares.Where(potentialValues.contains(i))
+                SetSquareValue(newSolvedSquare.row, newSolvedSquare.col, i)
+
+FindRowAndColumnSequencingInQuadrents()
+    foreach(quadrent in grid)
+        for(1-9)
+            List<Squares> squaresWithI = new List
+            foreach(square in currentQuadrent where potentialValues.contains(i) and !isSolved())
+                squaresWithI.Add(square)
+            if(squaresWithI.Count() > 1)
+                //Row Logic
+                bool sameRow = true
+                int diffRow = 0
+                
+                bool sameCol = true
+                int diffCol = 0
+
+                foreach(square in squaresWithI)
+                    //First Iteration
+                    if(diffRow == 0)
+                        diffRow = square.row
+                        diffCol = square.col                    
+                    if (diffRow != square.row)
+                        sameRow = false
+                    if (diffCol != square.col)
+                        sameCol = false
+
+                //If Same Row
+                if(sameRow)
+                    RemovePotentialValuesFromSpecifiedRow(diffRow, i)
+                    foreach(square in squaresWithI)
+                        square.PotentialValues.Add(i)
+                else if(sameCol)
+                    RemovePotentialValuesFromSpecifiedColumn(diffCol, i)
+                    foreach(square in squaresWithI)
+                        square.PotentialValues.Add(i)
