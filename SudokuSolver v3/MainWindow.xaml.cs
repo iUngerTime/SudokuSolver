@@ -103,6 +103,9 @@ namespace SudokuSolver_v3
                 }
             }
 
+            //Solves Entire Board
+            solver.SolveEntireBoard();
+
             try
             {
                 //Update Board

@@ -155,7 +155,7 @@ namespace SudokuSolverLogic
 
                 //Check solved or not
                 if (Squares.TrueForAll(SquareSolved))
-                    notSolved = true;
+                    notSolved = false;
             }
         }
 
@@ -267,7 +267,7 @@ namespace SudokuSolverLogic
                     //Update single square if one is found
                     if (numValues == 1)
                     {
-                        Square newSolvedSquare = Squares.Single(s => s.PotentialValues.Contains(i));
+                        Square newSolvedSquare = Squares.Single(s => !s.IsSolved && ((int)s.Block == quadrent) && s.PotentialValues.Contains(i));
                         SetSquareValue(newSolvedSquare.Row, newSolvedSquare.Column, i);
                     }
                 }
