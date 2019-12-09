@@ -21,29 +21,6 @@ namespace SudokuSolverLogic
         }
 
         /// <summary>
-        /// This will brute force solve the board using the information it already knows
-        /// </summary>
-        public void ForceSudokuSolve()
-        {
-            ////////////////////////
-            //tentative algorithim//
-            ////////////////////////
-            
-            //While(not finished)
-            //{
-            //  Duplicate board
-            //  Get square with smallest amount of potential values
-            //  Try to solve with that potential value
-            //  if resulting board is INVALID then remove that potential value from that square
-            //}
-
-            /*NOTES
-             * This needs a good function to determine if board becomes invalid!
-             * How will this be done?
-             */
-        }
-
-        /// <summary>
         /// Sudoku Requires at least 17 minimum squares to be solvable. This determines if the board has enough squares solved
         /// </summary>
         /// <returns>True if has 17 or more, false if not.</returns>
@@ -68,7 +45,7 @@ namespace SudokuSolverLogic
         /// Searches left to right, top down to find first square with least amount of potential values.
         /// </summary>
         /// <returns>Will default return the first square found with only 2 values</returns>
-        public Square SquareWithLeastAmountOfPotentialValues()
+        private Square SquareWithLeastAmountOfPotentialValues()
         {
             //Auto stops at the first square with 2 potential values
             bool shortcut = false;
@@ -123,28 +100,46 @@ namespace SudokuSolverLogic
 
             activeSquare.Value = value;
 
-            // Remove value from other squares in the same row
-            foreach (Square square in Squares.Where(s => !s.IsSolved && (s.Row == row)))
-            {
-                square.PotentialValues.Remove(value);
-            }
+            //Remove All Potential Values For Specified Square
+            activeSquare.PotentialValues.Clear();
 
-            // Remove value from other squares in the same column
-            foreach (Square square in Squares.Where(s => !s.IsSolved && (s.Column == column)))
-            {
-                square.PotentialValues.Remove(value);
-            }
+            RemovePotentialValuesFromSpecifiedRow(row, value);
 
-            // Remove value from other squares in the same quadrant
-            foreach (Square square in Squares.Where(s => !s.IsSolved && (s.Block == activeSquare.Block)))
-            {
-                square.PotentialValues.Remove(value);
-            }
+            RemovePotentialValuesFromSpecifiedColumn(column, value);
+
+            RemovePotentialValuesFromSpecifiedQuaderant(value, activeSquare);
 
             // Set the Value for any square that only have one remaining PotentialValue
             foreach (Square square in Squares.Where(s => !s.IsSolved && (s.PotentialValues.Count == 1)))
             {
                 SetSquareValue(square.Row, square.Column, square.PotentialValues[0]);
+            }
+        }
+
+        private void RemovePotentialValuesFromSpecifiedQuaderant(int value, Square activeSquare)
+        {
+            // Remove value from other squares in the same quadrant
+            foreach (Square square in Squares.Where(s => !s.IsSolved && (s.Block == activeSquare.Block)))
+            {
+                square.PotentialValues.Remove(value);
+            }
+        }
+
+        private void RemovePotentialValuesFromSpecifiedColumn(int column, int value)
+        {
+            // Remove value from other squares in the same column
+            foreach (Square square in Squares.Where(s => !s.IsSolved && (s.Column == column)))
+            {
+                square.PotentialValues.Remove(value);
+            }
+        }
+
+        private void RemovePotentialValuesFromSpecifiedRow(int row, int value)
+        {
+            // Remove value from other squares in the same row
+            foreach (Square square in Squares.Where(s => !s.IsSolved && (s.Row == row)))
+            {
+                square.PotentialValues.Remove(value);
             }
         }
     }

@@ -19,6 +19,7 @@ namespace SudokuSolverLogic.Tests
                 for (int col = 1; col < 10; col++)
                 {
                     Board testBoard = new Board();
+                    PrivateObject obj = new PrivateObject(testBoard);
 
                     //At left edge (set all but that col and (row +/- 1)(col)
                     if (col == 9)
@@ -53,7 +54,7 @@ namespace SudokuSolverLogic.Tests
                         }
                     }
 
-                    Square testSquare = testBoard.SquareWithLeastAmountOfPotentialValues();
+                    Square testSquare = (Square)obj.Invoke("SquareWithLeastAmountOfPotentialValues");
 
                     Assert.IsTrue(testSquare.Row == row);
                     Assert.IsTrue(testSquare.Column == col);
