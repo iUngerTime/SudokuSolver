@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:SudokuSolver_v3"
         mc:Ignorable="d"
         Title="Sudoku Solve" Height="450" Width="625"
-		  Style="{DynamicResource MainWindowStyle}">
+        WindowStartupLocation="CenterScreen"
+		Style="{DynamicResource MainWindowStyle}">
 	<DockPanel>
 		<Menu Background="White" DockPanel.Dock="Top">
 			<MenuItem Header="_Options">
@@ -17,16 +18,16 @@
 		<Grid Margin="8" x:Name="PuzzleSquares">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="123"/>
-				<RowDefinition Height="3"/>
+				<RowDefinition Height="4"/>
 				<RowDefinition Height="123"/>
-				<RowDefinition Height="3"/>
+				<RowDefinition Height="4"/>
 				<RowDefinition Height="123"/>
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="123"/>
-				<ColumnDefinition Width="3"/>
+				<ColumnDefinition Width="4"/>
 				<ColumnDefinition Width="123"/>
-				<ColumnDefinition Width="3"/>
+				<ColumnDefinition Width="4"/>
 				<ColumnDefinition Width="123"/>
 			</Grid.ColumnDefinitions>
 			<!--Gridlines-->

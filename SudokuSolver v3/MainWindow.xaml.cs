@@ -104,7 +104,7 @@ namespace SudokuSolver_v3
             }
 
             //Solves Entire Board
-            solver.SolveEntireBoard();
+            //solver.SolveEntireBoard();
 
             try
             {
@@ -118,6 +118,11 @@ namespace SudokuSolver_v3
             }
         }
 
+
+        /// <summary>
+        /// Updates UI board
+        /// </summary>
+        /// <param name="solver">Needs the logic to update</param>
         private void UpdateBoard(Board solver)
         {
             for (int row = 0; row < 9; row++)
@@ -126,7 +131,12 @@ namespace SudokuSolver_v3
                 {
                     if (GetUISquare(row, col).Content.ToString() == "0")
                     {
-                        GetUISquare(row, col).Content = Convert.ToString(solver.GetSquareValue(row + 1, col + 1));
+                        int? content = solver.GetSquareValue(row + 1, col + 1);
+
+                        if (content != null)
+                        {
+                            GetUISquare(row, col).Content = Convert.ToString(content);
+                        }                        
                     }
                 }
             }
@@ -135,7 +145,7 @@ namespace SudokuSolver_v3
         private bool ValidatePuzzle()
         {
             //Check All Squares for validity
-            bool valid = CheckSquares();
+            bool valid = CheckQuadrents();
 
             ////Check All rows for validity
             //if (valid)
@@ -160,7 +170,7 @@ namespace SudokuSolver_v3
             throw new NotImplementedException();
         }
 
-        private bool CheckSquares()
+        private bool CheckQuadrents()
         {
             bool isValid = true;
 

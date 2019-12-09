@@ -90,9 +90,9 @@ namespace SudokuSolverLogic
             return bestSquare;
         }
 
-        public int GetSquareValue(int row, int column)
+        public int? GetSquareValue(int row, int column)
         {
-            return (int)(Squares.Single(x => (x.Row == row) && (x.Column == column)).Value);
+            return (Squares.Single(x => (x.Row == row) && (x.Column == column)).Value);
         }
 
         public void SetSquareValue(int row, int column, int value)
