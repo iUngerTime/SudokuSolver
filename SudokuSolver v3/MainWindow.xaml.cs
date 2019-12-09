@@ -104,18 +104,10 @@ namespace SudokuSolver_v3
             }
 
             //Solves Entire Board
-            //solver.SolveEntireBoard();
+            solver.SolveEntireBoard();
 
-            try
-            {
-                //Update Board
-                UpdateBoard(solver);
-            }
-            catch (Exception)
-            {
-                //Tell user not enough information
-                MessageBox.Show("Not Enough Information To Solve Puzzle", "ERROR");
-            }
+            //Update Board
+            UpdateBoard(solver);
         }
 
 
@@ -136,7 +128,7 @@ namespace SudokuSolver_v3
                         if (content != null)
                         {
                             GetUISquare(row, col).Content = Convert.ToString(content);
-                        }                        
+                        }
                     }
                 }
             }

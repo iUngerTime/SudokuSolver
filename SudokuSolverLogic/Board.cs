@@ -90,11 +90,23 @@ namespace SudokuSolverLogic
             return bestSquare;
         }
 
+        /// <summary>
+        /// Gets a square's value from the row and colulmn
+        /// </summary>
+        /// <param name="row">Horizontal Directions</param>
+        /// <param name="column">Vertical Directions</param>
+        /// <returns>A null if it hasn't been set, otherwise the value.</returns>
         public int? GetSquareValue(int row, int column)
         {
             return (Squares.Single(x => (x.Row == row) && (x.Column == column)).Value);
         }
 
+        /// <summary>
+        /// Sets a square's value based on the row and column. Recursively calls itself.
+        /// </summary>
+        /// <param name="row">Horizontal Directions</param>
+        /// <param name="column">Vertical Directions</param>
+        /// <param name="value">Value to set square at</param>
         public void SetSquareValue(int row, int column, int value)
         {
             Square activeSquare = Squares.Single(x => (x.Row == row) && (x.Column == column));
@@ -144,6 +156,9 @@ namespace SudokuSolverLogic
             }
         }
 
+        /// <summary>
+        /// Function to be called externally to solve board to completion
+        /// </summary>
         public void SolveEntireBoard()
         {
             bool notSolved = true;
@@ -214,7 +229,7 @@ namespace SudokuSolverLogic
                             }
 
                             //Set bools if one square violates same column/row rules
-                            if (diffRow != s.Column)
+                            if (diffRow != s.Row)
                                 sameRow = false;
 
                             if (diffCol != s.Column)

@@ -140,5 +140,40 @@ namespace SudokuSolverLogic.Tests
             Assert.IsTrue(numAdded == 16);
             Assert.IsFalse(testBoard.HasMinimumSolvableSquares());
         }
+
+        [TestMethod()]
+        public void SingleNumberEliminationTest()
+        {
+            //Add values in every quadrent
+            for (int quadrent = 0; quadrent < 9; quadrent++)
+            {
+                //Test if FindSingleNumbersInQuadrents will find a value in all quadrents
+                Board testBoard = new Board();
+                PrivateObject obj = new PrivateObject(testBoard);
+
+                //Remove potential Values
+                
+
+                obj.Invoke("FindSingleNumbersInQuadrents");
+
+                //Quadrent Math
+                int row = 3;
+                int col = 3;
+
+                //For Row expected
+                if (quadrent > 2 && quadrent < 6)
+                    row = 6;
+                else if (quadrent > 5)
+                    row = 9;
+
+                //For col expected
+                if (quadrent == 1 || quadrent == 4 || quadrent == 7)
+                    col = 6;
+                else if (quadrent == 2 || quadrent == 5 || quadrent == 8)
+                    col = 9;
+
+                Assert.AreEqual(5, testBoard.GetSquareValue(row, col));
+            }
+        }
     }
 }
