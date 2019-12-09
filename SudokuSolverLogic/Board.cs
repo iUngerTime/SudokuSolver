@@ -165,11 +165,14 @@ namespace SudokuSolverLogic
 
             while (notSolved)
             {
-                FindSingleNumbersInQuadrents();
-                FindRowAndColumnSequencingInQuadrents();
+                bool singlesChanged = FindSingleNumbersInQuadrents();
+                bool sequenceChanged = FindRowAndColumnSequencingInQuadrents();
 
                 //Check solved or not
                 if (Squares.TrueForAll(SquareSolved))
+                    notSolved = false;
+                //Shortcut harder puzzles that can't be solved
+                else if (!singlesChanged && !sequenceChanged)
                     notSolved = false;
             }
         }
@@ -188,6 +191,7 @@ namespace SudokuSolverLogic
         /// Finds Consectutive Sequences of either identitcal rows and columns.
         /// If a sequence is found it removes all other other potential values from those row/columns.
         /// </summary>
+        /// <returns>True if any sequences were changed, False if not</returns>
         private bool FindRowAndColumnSequencingInQuadrents()
         {
             bool eliminatedValues = false;
