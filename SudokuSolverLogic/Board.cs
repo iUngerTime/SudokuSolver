@@ -188,8 +188,10 @@ namespace SudokuSolverLogic
         /// Finds Consectutive Sequences of either identitcal rows and columns.
         /// If a sequence is found it removes all other other potential values from those row/columns.
         /// </summary>
-        private void FindRowAndColumnSequencingInQuadrents()
+        private bool FindRowAndColumnSequencingInQuadrents()
         {
+            bool eliminatedValues = false;
+            
             //Loop All Quadrents
             for (int quadrent = 0; quadrent < 9; quadrent++)
             {
@@ -244,6 +246,9 @@ namespace SudokuSolverLogic
                             {
                                 s.PotentialValues.Add(i);
                             }
+
+                            //Indicate changed values
+                            eliminatedValues = true;
                         }
                         else if (sameCol)
                         {
@@ -252,18 +257,26 @@ namespace SudokuSolverLogic
                             {
                                 s.PotentialValues.Add(i);
                             }
+
+                            //Indicate changed values
+                            eliminatedValues = true;
                         }
                     }
                 }
             }
+
+            return eliminatedValues;
         }
 
         /// <summary>
         /// Finds numbers in quadrents that can only be one value and updates that square with its 
         /// proper value.
         /// </summary>
-        private void FindSingleNumbersInQuadrents()
+        /// <returns>True if changed a value, false if nothing was changed</returns>
+        private bool FindSingleNumbersInQuadrents()
         {
+            bool changedSquare = false;
+
             //Loop All Quadrents
             for (int quadrent = 0; quadrent < 9; quadrent++)
             {
@@ -284,9 +297,14 @@ namespace SudokuSolverLogic
                     {
                         Square newSolvedSquare = Squares.Single(s => !s.IsSolved && ((int)s.Block == quadrent) && s.PotentialValues.Contains(i));
                         SetSquareValue(newSolvedSquare.Row, newSolvedSquare.Column, i);
+
+                        //Mark that something was changed
+                        changedSquare = true;
                     }
                 }
             }
+
+            return changedSquare;
         }
     }
 }
