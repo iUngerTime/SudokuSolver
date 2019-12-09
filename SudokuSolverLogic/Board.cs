@@ -52,7 +52,7 @@ namespace SudokuSolverLogic
             bool shortcut = false;
 
             //Variables
-            Square bestSquare = new Square(0,0);
+            Square bestSquare = new Square(0, 0);
             int currentSmallestNum = 10;
 
             //Search every square
@@ -178,7 +178,68 @@ namespace SudokuSolverLogic
             //Loop All Quadrents
             for (int quadrent = 0; quadrent < 9; quadrent++)
             {
-                
+                //Find Singles of Each number in Each quadrent
+                for (int i = 1; i < 10; i++)
+                {
+                    //List to store all values in quadrent with i value
+                    List<Square> squaresWithI = new List<Square>();
+
+                    // SearchQuadrent
+                    foreach (Square currSquare in Squares.Where(s => !s.IsSolved && ((int)s.Block == quadrent) && s.PotentialValues.Contains(i)))
+                    {
+                        squaresWithI.Add(currSquare);
+                    }
+
+                    //If potentially sequenced squares (more than one square) have been found
+                    if (squaresWithI.Count() > 1)
+                    {
+                        //Row Knowledge Variables
+                        bool sameRow = true;
+                        int diffRow = 0;
+
+                        //Column knowledge variables
+                        bool sameCol = true;
+                        int diffCol = 0;
+
+                        foreach (Square s in squaresWithI)
+                        {
+                            //First iteration to set column and row
+                            if (diffRow == 0 || diffCol == 0)
+                            {
+                                //Set running value for rows
+                                diffRow = s.Row;
+
+                                //set running value for columns
+                                diffCol = s.Column;
+                            }
+
+                            //Set bools if one square violates same column/row rules
+                            if (diffRow != s.Column)
+                                sameRow = false;
+
+                            if (diffCol != s.Column)
+                                sameCol = false;
+                        }
+
+                        //If Same Row or Column (cannot be both at same time) remove all other values from columns/rows
+                        if (sameRow)
+                        {
+                            RemovePotentialValuesFromSpecifiedRow(diffRow, i);
+                            foreach (Square s in squaresWithI)
+                            {
+                                s.PotentialValues.Add(i);
+                            }
+                        }
+                        else if (sameCol)
+                        {
+                            RemovePotentialValuesFromSpecifiedColumn(diffCol, i);
+                            foreach (Square s in squaresWithI)
+                            {
+                                s.PotentialValues.Add(i);
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -204,7 +265,7 @@ namespace SudokuSolverLogic
                     }
 
                     //Update single square if one is found
-                    if(numValues == 1)
+                    if (numValues == 1)
                     {
                         Square newSolvedSquare = Squares.Single(s => s.PotentialValues.Contains(i));
                         SetSquareValue(newSolvedSquare.Row, newSolvedSquare.Column, i);
