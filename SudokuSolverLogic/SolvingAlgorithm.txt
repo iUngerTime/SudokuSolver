@@ -1,0 +1,36 @@
+Algorithm pseudo code for SudokuSolverLogic
+
+SolveSquareInBoard(row, column, value)
+    Find square
+        Square(row, column).value = value
+
+    RemoveAllPotentialValuesFromSquare
+
+    RemovePotentialValuesFromSquare(block, value)
+
+    RemovePotentialValuesFromRow(row, value)
+
+    RemovePotentialValuesFromColumn(column, value)
+
+    Foreach square in board
+        if(square.potentialValue.size = 1)
+            SolveSquareInBoard(square.row, square.column, square.value)
+
+RemovePotentialValuesFromSquare(block, value)
+    foreach square in block
+        square.potentialValues.remove(value)
+
+RemovePotentialValuesFromRow(row, value)
+    foreach square in row
+        square.potentialValues.remove(value)
+
+RemovePotentialValuesFromColumn(column, value)
+    foreach square in column
+        square.potentialValue.remove(value)
+
+RemoveAllPotentialValuesFromSquare(row, column)
+    square.potentialValues.purge()
+
+SolveEntireBoard()
+    while(notSolved)
+        FindNumberInGridWithOne
