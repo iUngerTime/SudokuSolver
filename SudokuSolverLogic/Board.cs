@@ -154,25 +154,63 @@ namespace SudokuSolverLogic
                 FindRowAndColumnSequencingInQuadrents();
 
                 //Check solved or not
-                if (Squares.TrueForAll(squareSolved))
+                if (Squares.TrueForAll(SquareSolved))
                     notSolved = true;
             }
         }
 
-        // Search predicate returns true if square is solved
-        private static bool squareSolved(Square s)
+        /// <summary>
+        /// Search predicate to determine board solved
+        /// </summary>
+        /// <param name="s">Square in question</param>
+        /// <returns>true if square is solved</returns>
+        private static bool SquareSolved(Square s)
         {
             return s.IsSolved;
         }
 
+        /// <summary>
+        /// Finds Consectutive Sequences of either identitcal rows and columns.
+        /// If a sequence is found it removes all other other potential values from those row/columns.
+        /// </summary>
         private void FindRowAndColumnSequencingInQuadrents()
         {
-            throw new NotImplementedException();
+            //Loop All Quadrents
+            for (int quadrent = 0; quadrent < 9; quadrent++)
+            {
+                
+            }
         }
 
+        /// <summary>
+        /// Finds numbers in quadrents that can only be one value and updates that square with its 
+        /// proper value.
+        /// </summary>
         private void FindSingleNumbersInQuadrents()
         {
-            throw new NotImplementedException();
+            //Loop All Quadrents
+            for (int quadrent = 0; quadrent < 9; quadrent++)
+            {
+                //Find Singles of Each number in Each quadrent
+                for (int i = 1; i < 10; i++)
+                {
+                    //int to keep track of number found
+                    int numValues = 0;
+
+                    // SearchQuadrent
+                    foreach (Square square in Squares.Where(s => !s.IsSolved && ((int)s.Block == quadrent) && s.PotentialValues.Contains(i)))
+                    {
+                        numValues++;
+                    }
+
+                    //Update single square if one is found
+                    if(numValues == 1)
+                    {
+                        Square newSolvedSquare = Squares.Single(s => s.PotentialValues.Contains(i));
+                        SetSquareValue(newSolvedSquare.Row, newSolvedSquare.Column, i);
+                    }
+                }
+            }
         }
     }
 }
