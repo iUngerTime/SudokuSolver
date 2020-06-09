@@ -2,7 +2,7 @@
 
 namespace SudokuSolverLogic
 {
-    public class Square
+    class Square
     {
         private readonly List<int> _potentialValues = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 

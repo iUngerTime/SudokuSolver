@@ -49,5 +49,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PuzzleGenerator\PuzzleGenerator.csproj">
+      <Project>{c0310542-ce23-4f66-ad63-f11bcbc9c973}</Project>
+      <Name>PuzzleGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SudokuSolverLogic\SolverLogic.csproj">
+      <Project>{8a358735-168e-4173-8fb0-ee37c62eef5c}</Project>
+      <Name>SolverLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
