@@ -14,7 +14,7 @@ namespace BackEndConsoleBased
         static void Main(string[] args)
         {
             //Generate easy puzzle
-            SudokuPuzzle puzzle = new Generator().GenerateNewPuzzle(1);
+            SudokuPuzzle puzzle = new Generator().GenerateNewPuzzle(2);
 
             //Create new board
             Board solver = new Board();
@@ -38,6 +38,7 @@ namespace BackEndConsoleBased
             PrintBoardState(solver);
 
             //Wait for input
+            Console.ReadLine();
             Console.ReadLine();
         }
 

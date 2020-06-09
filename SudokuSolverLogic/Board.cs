@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Xml.Schema;
 
 namespace SudokuSolverLogic
 {
     public class Board
-    {   
+    {
         //List of squares that make up the board
         private List<Square> Squares { get; set; }
 
@@ -95,6 +96,29 @@ namespace SudokuSolverLogic
 
         #region Remove Potential Values
         /// <summary>
+        /// Will set any squares with only 1 value to that value
+        /// </summary>
+        /// <returns>Returns true if at least one square was edited, else it returns false.</returns>
+        private bool SetAllSquaresWithOnlyOneValue()
+        {
+            bool changedSquare = false;
+
+            // Set the Value for any square that only have one remaining PotentialValue
+            foreach (Square square in Squares.Where(s => !s.IsSet && (s.PotentialValues.Count == 1)))
+            {
+                //Set the newly found value
+                SetSquareValue(square.Row, square.Column, square.PotentialValues[0]);
+
+                //Permanently set the value and continue the solve
+                SolidifySquareValue(square);
+
+                changedSquare = true;
+            }
+
+            return changedSquare;
+        }
+
+        /// <summary>
         /// Used to remove the potential values for a cell.
         /// Will check the rest of the board to find any others that can be solved.
         /// Solved squares have their potential values cleared
@@ -102,7 +126,8 @@ namespace SudokuSolverLogic
         /// <param name="cell">The cell to set permanently to a value</param>
         private void SolidifySquareValue(Square cell)
         {
-            if (cell.IsSet)
+            //Don't do any work if it hasn't been set nor it has already been solidified (list is empty)
+            if (cell.IsSet && cell.PotentialValues.Count != 0)
             {
                 //Remove All Potential Values For Specified Square
                 cell.PotentialValues.Clear();
@@ -247,8 +272,7 @@ namespace SudokuSolverLogic
         {
             bool changedSquare = false;
 
-            //Loop All Quadrents
-            for (int quadrent = 0; quadrent < 9; quadrent++)
+            foreach (Blocks block in Enum.GetValues(typeof(Blocks)))
             {
                 //Find Singles of Each number in Each quadrent
                 for (int i = 1; i < 10; i++)
@@ -257,7 +281,7 @@ namespace SudokuSolverLogic
                     int numValues = 0;
 
                     // SearchQuadrent
-                    foreach (Square square in Squares.Where(s => !s.IsSet && ((int)s.Block == quadrent) && s.PotentialValues.Contains(i)))
+                    foreach (Square square in Squares.Where(s => !s.IsSet && (s.Block == block) && s.PotentialValues.Contains(i)))
                     {
                         numValues++;
                     }
@@ -265,8 +289,9 @@ namespace SudokuSolverLogic
                     //Update single square if one is found
                     if (numValues == 1)
                     {
-                        Square newSolvedSquare = Squares.Single(s => !s.IsSet && ((int)s.Block == quadrent) && s.PotentialValues.Contains(i));
+                        Square newSolvedSquare = Squares.Single(s => !s.IsSet && (s.Block == block) && s.PotentialValues.Contains(i));
                         SetSquareValue(newSolvedSquare.Row, newSolvedSquare.Column, i);
+                        SolidifySquareValue(newSolvedSquare);
 
                         //Mark that something was changed
                         changedSquare = true;
@@ -281,9 +306,15 @@ namespace SudokuSolverLogic
         /// <summary>
         /// Function to be called externally to solve board to completion
         /// </summary>
-        /// <returns>Returns True on success. Returns false if unsolvable or doesn't have at least 17 squares.</returns>
+        /// <returns>Returns True on success. Otherwise returns false on error (see debug console lines).</returns>
         public bool SolveEntireBoard()
         {
+            if (!PuzzleInValidState())
+            {
+                Debug.WriteLine("FATAL ERROR: User gave solver invalid puzzle");
+                return false;
+            }
+
             //Check if puzzle currently has enough clues to be solved
             if (!HasMinimumSolvableSquares())
             {
@@ -298,28 +329,31 @@ namespace SudokuSolverLogic
                 SolidifySquareValue(sqr);
             }
 
-            if(!Solved)
+            //Try to finish solving
+            while (!Solved)
             {
                 //Advanced Algorithems
-                Debug.WriteLine("Unable to finish solving");
+                bool changedOneQuadrent = FindSingleNumbersInQuadrents();
+                bool changedOneCell = SetAllSquaresWithOnlyOneValue();
 
+                //If no changes were made
+                if (!changedOneCell && !changedOneQuadrent)
+                    break;
+            }
+
+            if (!PuzzleInValidState())
+            {
+                Debug.WriteLine("FATAL ERROR: Logic placed puzzle in invalid state");
+                return false;
+            }
+
+            if (!Solved)
+            {
+                Debug.WriteLine("Error: Unable to finish solving");
                 return false;
             }
 
             return true;
-
-            //while (notSolved)
-            //{
-            //    bool singlesChanged = FindSingleNumbersInQuadrents();
-            //    bool sequenceChanged = FindRowAndColumnSequencingInQuadrents();
-
-            //    //Check solved or not
-            //    if (Squares.TrueForAll(SquareSolved))
-            //        notSolved = false;
-            //    //Shortcut harder puzzles that can't be solved
-            //    else if (!singlesChanged && !sequenceChanged)
-            //        notSolved = false;
-            //}
         }
 
         /// <summary>
@@ -368,6 +402,90 @@ namespace SudokuSolverLogic
                 solvable = true;
 
             return solvable;
+        }
+
+        /// <summary>
+        /// Evaluates if the puzze is in a valid state (follows the rules of sudoku)
+        /// </summary>
+        /// <returns>Returns true if in valid state, false if not.</returns>
+        public bool PuzzleInValidState()
+        {
+            bool valid = true;
+
+            //Check quadrents
+            foreach (Blocks block in Enum.GetValues(typeof(Blocks)))
+            {
+                //Find numbers with duplicates
+                for (int i = 1; i < 10; i++)
+                {
+                    int numOfNumber = 0;
+
+                    // SearchQuadrent
+                    foreach (Square square in Squares.Where(s => (s.Block == block) && s.Value == i))
+                    {
+                        numOfNumber++;
+                    }
+
+                    //Should never be above 1
+                    if (numOfNumber > 1)
+                    {
+                        valid = false;
+                        Debug.WriteLine("STATE ERROR: Broke Quadrent Rules");
+                    }
+                }
+            }
+
+            if (!valid)
+                return false;
+
+            ////////////////
+            //Check rows
+            ////////////////
+            //Find numbers with duplicates
+            for (int i = 1; i < 10; i++)
+            {
+                int numOfNumber = 0;
+
+                // SearchQuadrent
+                foreach (Square square in Squares.Where(s => s.Value == i && s.Row == i))
+                {
+                    numOfNumber++;
+                }
+
+                //Should never be above 1
+                if (numOfNumber > 1)
+                {
+                    valid = false;
+                    Debug.WriteLine("STATE ERROR: Broke Row Rules");
+                }
+            }
+
+            if (!valid)
+                return false;
+
+            ////////////////
+            //Check rows
+            ////////////////
+            //Find numbers with duplicates
+            for (int i = 1; i < 10; i++)
+            {
+                int numOfNumber = 0;
+
+                // SearchQuadrent
+                foreach (Square square in Squares.Where(s => s.Value == i && s.Column == i))
+                {
+                    numOfNumber++;
+                }
+
+                //Should never be above 1
+                if (numOfNumber > 1)
+                {
+                    valid = false;
+                    Debug.WriteLine("STATE ERROR: Broke Column Rules");
+                }
+            }
+
+            return valid;
         }
         #endregion
     }

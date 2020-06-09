@@ -6,19 +6,6 @@ namespace SudokuSolverLogic
     {
         private readonly List<int> _potentialValues = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-        internal enum Blocks
-        {
-            UpperLeft,
-            UpperMiddle,
-            UpperRight,
-            MiddleLeft,
-            Middle,
-            MiddleRight,
-            LowerLeft,
-            LowerMiddle,
-            LowerRight
-        }
-
         public int Row { get; private set; }
         public int Column { get; private set; }
 
@@ -68,5 +55,18 @@ namespace SudokuSolverLogic
             Value = value;
             PotentialValues = _potentialValues;
         }
+    }
+
+    enum Blocks
+    {
+        UpperLeft,
+        UpperMiddle,
+        UpperRight,
+        MiddleLeft,
+        Middle,
+        MiddleRight,
+        LowerLeft,
+        LowerMiddle,
+        LowerRight
     }
 }
