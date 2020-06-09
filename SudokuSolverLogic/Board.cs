@@ -8,6 +8,10 @@ namespace SudokuSolverLogic
     {
         private List<Square> Squares { get; set; }
 
+
+        /// <summary>
+        /// Creates a new 9x9 board with empty values
+        /// </summary>
         public Board()
         {
             Squares = new List<Square>();
