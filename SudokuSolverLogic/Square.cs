@@ -55,16 +55,17 @@ namespace SudokuSolverLogic
             }
         }
 
-        public bool IsSolved { get { return Value != null; } }
+        public bool IsSet { get { return (Value != 0 ? true : false); } }
 
-        public int? Value { get; set; }
+        public int Value { get; set; }
 
         internal List<int> PotentialValues { get; private set; }
 
-        internal Square(int row, int column)
+        internal Square(int row, int column, int value = 0)
         {
             Row = row;
             Column = column;
+            Value = value;
             PotentialValues = _potentialValues;
         }
     }
