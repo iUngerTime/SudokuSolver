@@ -14,7 +14,7 @@ namespace BackEndConsoleBased
         static void Main(string[] args)
         {
             //Generate easy puzzle
-            SudokuPuzzle puzzle = new Generator().GenerateNewPuzzle(2);
+            SudokuPuzzle puzzle = new Generator().GenerateNewPuzzle(1);
 
             //Create new board
             Board solver = new Board();

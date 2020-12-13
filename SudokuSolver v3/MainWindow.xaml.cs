@@ -1,4 +1,6 @@
-﻿using SudokuSolverLogic;
+﻿using PuzzleGenerator.Models;
+using PuzzleGenerator.Service;
+using SudokuSolverLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +66,11 @@ namespace SudokuSolver_v3
         }
 
         private void ClearAllSquaresClick(object sender, RoutedEventArgs e)
+        {
+            ClearSquaresOfContent();
+        }
+
+        void ClearSquaresOfContent()
         {
             //Iterate through all puzzle btns
             foreach (Grid Square in PuzzleSquares.Children.OfType<Grid>())
@@ -358,6 +365,33 @@ namespace SudokuSolver_v3
                 return b80;
             else
                 return new ToggleButton();
+        }
+
+        private void GenerateEasyPuzzle(object sender, RoutedEventArgs e)
+        {
+            ClearSquaresOfContent();
+            SudokuPuzzle puzzle = new Generator().GenerateNewPuzzle(1);
+            LoadGeneratedPuzzle(puzzle);
+        }
+        private void GenerateMediumPuzzle(object sender, RoutedEventArgs e)
+        {
+            ClearSquaresOfContent();
+            SudokuPuzzle puzzle = new Generator().GenerateNewPuzzle(2);
+            LoadGeneratedPuzzle(puzzle);
+        }
+        private void GenerateHardPuzzle(object sender, RoutedEventArgs e)
+        {
+            ClearSquaresOfContent();
+            SudokuPuzzle puzzle = new Generator().GenerateNewPuzzle(3);
+            LoadGeneratedPuzzle(puzzle);
+        }
+
+        private void LoadGeneratedPuzzle(SudokuPuzzle newPuzzle)
+        {
+            foreach (Square square in newPuzzle.squares)
+            {
+                GetUISquare(square.x, square.y).Content = square.value.ToString();
+            }
         }
     }
 }

@@ -11,8 +11,11 @@
 	<DockPanel>
 		<Menu Background="White" DockPanel.Dock="Top">
 			<MenuItem Header="_Options">
-				<MenuItem Header="_Clear All Squares" Click="ClearAllSquaresClick"/>
-			</MenuItem>
+                <MenuItem Header="_Clear All Squares" Click="ClearAllSquaresClick"/>
+                <MenuItem Header="Generate _Easy Puzzle" Click="GenerateEasyPuzzle"/>
+                <MenuItem Header="Generate _Medium Puzzle" Click="GenerateMediumPuzzle"/>
+                <MenuItem Header="Generate _Hard Puzzle" Click="GenerateHardPuzzle"/>
+            </MenuItem>
 		</Menu>
 		<!--Grid-->
 		<Grid Margin="8" x:Name="PuzzleSquares">
